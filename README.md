@@ -36,13 +36,7 @@ pwd
 
 ## 🛠️ Installation & Setup
 
-### 1. Navigate to the Project Directory
-
-```bash
-cd metadata-creator
-```
-
-### 2. Install Dependencies
+### 1. Install Dependencies
 
 Using npm (recommended):
 ```bash
@@ -54,7 +48,7 @@ Or using yarn:
 yarn install
 ```
 
-### 3. Start the Development Server
+### 2. Start the Development Server
 
 ```bash
 npm start
@@ -62,7 +56,7 @@ npm start
 
 The application will automatically open in your default browser at [http://localhost:3000](http://localhost:3000).
 
-### 4. Verify Installation
+### 3. Verify Installation
 
 You should see the Metadata Creator interface with form fields for creating metadata JSON files.
 
