@@ -4,13 +4,15 @@ A React/TypeScript application for creating and validating metadata JSON files w
 
 ## 🚀 Features
 
+- ✅ **4-Step Wizard Workflow** - Guided process that matches the development workflow
 - ✅ **Form-based JSON creation** - Create metadata JSON through intuitive forms
-- ✅ **Real-time validation** - Zod schema validation with instant feedback
-- ✅ **Dynamic prompt management** - Add/remove prompts with a plus button
-- ✅ **JSON preview** - Live preview of generated JSON
+- ✅ **Real-time validation** - Zod schema validation with instant feedback at each step
+- ✅ **Advanced prompt builder** - Visual prompt cards with persistent form state
+- ✅ **Smart field ordering** - Fields appear when they become available in the workflow
+- ✅ **JSON preview** - Live preview of generated JSON with masked placeholders
 - ✅ **Export functionality** - Download JSON files or copy to clipboard
 - ✅ **Import support** - Load existing JSON files for editing
-- ✅ **UUID generation** - Automatic UUID generation for required fields
+- ✅ **Persistent form state** - No data loss when switching between prompts
 - ✅ **Responsive design** - Works on desktop and mobile devices
 
 ## 📋 Prerequisites
@@ -36,7 +38,13 @@ pwd
 
 ## 🛠️ Installation & Setup
 
-### 1. Install Dependencies
+### 1. Navigate to the Project Directory
+
+```bash
+cd P28-Metadata-Creator
+```
+
+### 2. Install Dependencies
 
 Using npm (recommended):
 ```bash
@@ -48,7 +56,7 @@ Or using yarn:
 yarn install
 ```
 
-### 2. Start the Development Server
+### 3. Start the Development Server
 
 ```bash
 npm start
@@ -56,7 +64,7 @@ npm start
 
 The application will automatically open in your default browser at [http://localhost:3000](http://localhost:3000).
 
-### 3. Verify Installation
+### 4. Verify Installation
 
 You should see the Metadata Creator interface with form fields for creating metadata JSON files.
 
@@ -67,7 +75,7 @@ You should see the Metadata Creator interface with form fields for creating meta
 1. **Clone the repository** (if you haven't already):
    ```bash
    git clone <repository-url>
-   cd <repository-name>/metadata-creator
+   cd P28-Metadata-Creator
    ```
 
 2. **Install dependencies**:
@@ -102,18 +110,23 @@ Fill in the basic project information to get started:
   - Codebase category
   - Repository type
 
-#### **Step 2: Prompt Builder**
-Add and configure all your prompts:
-- Use the "+ Add Prompt" button to add multiple prompts
-- For each prompt, complete all required fields:
-  - Prompt text
-  - Response time (seconds)
-  - PDF and output file links
-  - Use case and issue type
-  - Choices ratings (-1 to 7 scale)
+#### **Step 2: Prompt Builder** 🎯
+Advanced prompt management with visual interface:
+- **Visual Prompt Cards**: See all prompts at a glance with completion status
+- **Click to Edit**: Select any prompt card to edit its details
+- **Persistent State**: Form data is preserved when switching between prompts
+- **Add/Remove Prompts**: Use the "+ Add Prompt" button to add more prompts
+- **Complete Form Fields** for each prompt:
+  - Prompt text (textarea)
+  - Response time in seconds
+  - PDF link (Google Drive)
+  - Output files link (Google Drive)
+  - Use case description
+  - Issue type (dropdown)
+  - Choices ratings (interaction: 0-7, others: -1 to 7)
   - Level of correctness (-1, 0, 1, 2)
   - Build creator (default/worker)
-  - Comments
+  - Comments (textarea)
 
 #### **Step 3: Final Details** ⭐ *New Step*
 Complete these fields **after** all prompts have been processed:
@@ -138,12 +151,22 @@ Review your complete metadata and export the JSON file.
 - **📁 Import JSON**: Load an existing JSON file for editing
 - **🗑️ Reset**: Clear all fields and start over
 
+### Advanced Prompt Builder Features
+
+- **Visual Prompt Cards**: Each prompt is displayed as a card showing completion status
+- **Persistent Form State**: Switch between prompts without losing data
+- **Click-to-Edit Interface**: Simply click any prompt card to edit its details
+- **Real-time Validation**: Instant feedback on required fields and validation errors
+- **Completion Indicators**: Visual status showing ✅ Complete or ❌ Incomplete
+- **Flexible Management**: Add, remove, and reorder prompts as needed
+
 ### Workflow Benefits
 
-- **Matches Development Process**: Fields are requested when they become available
-- **Prevents Errors**: No need to guess UUID/HFI ID values before they exist
-- **Clear Progression**: Step-by-step workflow guides you through the process
-- **Validation**: Each step is validated before proceeding to the next
+- **Matches Development Process**: Fields are requested exactly when they become available
+- **Prevents Data Loss**: No form data is lost when switching between prompts or steps
+- **Clear Progression**: Step-by-step workflow guides you through the entire process
+- **Smart Validation**: Each step is validated independently before proceeding
+- **User-Friendly**: Intuitive interface with helpful descriptions and visual cues
 
 ## 📄 JSON Structure
 
@@ -203,16 +226,41 @@ The application creates JSON files with the following structure:
 - **build_creator**: Either "default" or "worker"
 
 #### Prompt Fields (Step 2)
+- **prompt**: The actual prompt text (textarea)
+- **response_time_seconds**: Time taken to respond in seconds
+- **pdf_link**: Google Drive link to PDF documentation
+- **output_files_link**: Google Drive link to output files
+- **usecase**: Description of the use case
+- **issue_type**: Type of issue (dropdown selection)
 - **interaction_rating**: Scale 0-7 for interaction quality
 - **Other choice ratings**: Scale -1 to 7 for various code quality aspects
 - **level_of_correctness**: Overall correctness rating (-1, 0, 1, 2)
+- **build_creator**: Per-prompt build creator setting (default/worker)
+- **comment**: Comments about the prompt response
 
 #### Final Details (Step 3) - *Available after prompts are processed*
 - **uuid**: Unique identifier from portal (after first prompt completion)
 - **hfi_id**: Human-feedback interface identifier from portal (after first prompt completion)
 - **final_codebase_link**: Link to the final codebase (after all prompts are completed)
 
-## 🛠️ Development
+## � Recent Improvements
+
+### ✅ **Fixed: Form Data Persistence**
+- **Issue**: Previously, switching between prompts would clear form fields
+- **Solution**: Implemented stable component rendering that keeps all forms mounted
+- **Result**: Form data now persists when navigating between prompts
+
+### ✅ **Enhanced Workflow**
+- **4-Step Wizard**: Restructured into logical steps that match development workflow
+- **Smart Field Ordering**: UUID, HFI ID, and final codebase link appear only after prompts
+- **Visual Improvements**: Better styling, animations, and user feedback
+
+### ✅ **Schema Updates**
+- **Per-Prompt Build Creator**: Each prompt now has its own build_creator setting
+- **Comprehensive Validation**: Improved validation with better error messages
+- **Type Safety**: Enhanced TypeScript integration with Zod schemas
+
+## �🛠️ Development
 
 ### Available Scripts
 
@@ -245,27 +293,45 @@ The application creates JSON files with the following structure:
 ### Project Structure
 
 ```
-metadata-creator/
+P28-Metadata-Creator/
 ├── public/
-│   └── index.html             # HTML template
+│   └── index.html                 # HTML template
 ├── src/
 │   ├── components/
-│   │   ├── MetadataCreator.tsx    # Main component
-│   │   ├── MainFieldsForm.tsx     # Main metadata fields
-│   │   ├── PromptForm.tsx         # Individual prompt form
-│   │   ├── PromptList.tsx         # Prompt management
-│   │   └── JsonPreview.tsx        # JSON preview and export
+│   │   ├── ConfirmDialog.tsx      # Custom confirmation dialogs
+│   │   ├── FinalDetailsForm.tsx   # Step 3: Final details (UUID, HFI ID, etc.)
+│   │   ├── JsonPreview.tsx        # Step 4: JSON preview and export
+│   │   ├── MainFieldsForm.tsx     # Step 1: Initial metadata fields
+│   │   ├── MetadataCreator.tsx    # Main metadata creator component
+│   │   ├── MetadataWizard.tsx     # Main wizard component (4-step workflow)
+│   │   ├── Notification.tsx       # Custom notification system
+│   │   ├── PromptBuilder.tsx      # Step 2: Advanced prompt management
+│   │   ├── PromptCard.tsx         # Individual prompt editor
+│   │   ├── PromptForm.tsx         # Individual prompt form component
+│   │   └── PromptList.tsx         # Prompt list management component
+│   ├── hooks/
+│   │   ├── useConfirmDialog.ts    # Dialog management hook
+│   │   └── useNotification.ts     # Notification management hook
 │   ├── types/
 │   │   └── metadata.ts            # TypeScript interfaces and Zod schemas
-│   ├── hooks/                     # Custom React hooks
-│   ├── utils/                     # Utility functions
+│   ├── utils/                     # Utility functions (currently empty)
 │   ├── App.tsx                    # Main App component
 │   ├── App.css                    # Global styles
 │   └── index.tsx                  # Entry point
-├── package.json               # Dependencies and scripts
-├── tsconfig.json             # TypeScript configuration
-└── README.md                 # This file
+├── package.json                   # Dependencies and scripts
+├── tsconfig.json                 # TypeScript configuration
+└── README.md                     # This file
 ```
+
+## 🧰 Technologies Used
+
+- **React 18** - Modern UI framework with hooks and concurrent features
+- **TypeScript** - Type safety and enhanced developer experience
+- **React Hook Form** - Advanced form management with array field support
+- **Zod** - Runtime schema validation with TypeScript integration
+- **UUID** - UUID generation for unique identifiers
+- **Create React App** - Build tooling and development server
+- **CSS3** - Modern styling with gradients, animations, and responsive design
 
 ## 🔧 Troubleshooting
 
@@ -310,7 +376,70 @@ npm run build
 
 ## 🚀 Deployment
 
-### Building for Production
+### GitHub Pages Deployment (Recommended)
+
+This project is configured for easy deployment to GitHub Pages. Follow these steps:
+
+#### Prerequisites
+
+1. **Create a GitHub repository** for your project
+2. **Push your code** to the repository
+3. **Enable GitHub Pages** in repository settings
+
+#### Step 1: Configure Your Repository URL
+
+Update the `homepage` field in `package.json` with your actual GitHub information:
+
+```json
+{
+  "homepage": "https://YOUR_GITHUB_USERNAME.github.io/P28-Metadata-Creator"
+}
+```
+
+**Example**: If your GitHub username is `johndoe`, change it to:
+```json
+{
+  "homepage": "https://johndoe.github.io/P28-Metadata-Creator"
+}
+```
+
+#### Step 2: Deploy to GitHub Pages
+
+```bash
+# Build and deploy in one command
+npm run deploy
+```
+
+This command will:
+1. Build the production version (`npm run build`)
+2. Create/update the `gh-pages` branch
+3. Deploy the built files to GitHub Pages
+
+#### Step 3: Access Your Deployed App
+
+After deployment, your app will be available at:
+```
+https://YOUR_GITHUB_USERNAME.github.io/P28-Metadata-Creator
+```
+
+#### GitHub Pages Setup in Repository
+
+1. Go to your repository on GitHub
+2. Click **Settings** tab
+3. Scroll down to **Pages** section
+4. Under **Source**, select **Deploy from a branch**
+5. Select **gh-pages** branch and **/ (root)** folder
+6. Click **Save**
+
+#### Deployment Commands
+
+- **`npm run deploy`** - Build and deploy to GitHub Pages
+- **`npm run predeploy`** - Build for production (runs automatically before deploy)
+- **`npm run build`** - Build for production only
+
+### Alternative Deployment Options
+
+#### Building for Production
 
 ```bash
 npm run build
@@ -318,7 +447,45 @@ npm run build
 
 This creates a `build/` folder with optimized files ready for deployment.
 
-### Deployment Options
+#### Other Hosting Services
 
-- **Static hosting**: Deploy the `build/` folder to services like Netlify, Vercel, or GitHub Pages
+- **Netlify**: Drag and drop the `build/` folder or connect your GitHub repository
+- **Vercel**: Connect your GitHub repository for automatic deployments
 - **Web server**: Serve the `build/` folder with any web server (nginx, Apache, etc.)
+
+### Deployment Troubleshooting
+
+#### Common Issues
+
+**Deployment fails with permission errors:**
+```bash
+# Make sure you're logged into GitHub and have push access
+git remote -v
+git push origin main
+```
+
+**App shows blank page after deployment:**
+- Check that the `homepage` URL in `package.json` matches your GitHub Pages URL exactly
+- Ensure the repository name matches the URL path
+
+**404 errors on refresh:**
+- This is normal for single-page apps on GitHub Pages
+- Users should navigate using the app's internal navigation
+
+**Build fails during deployment:**
+```bash
+# Clear cache and rebuild
+rm -rf node_modules package-lock.json build
+npm install
+npm run build
+```
+
+#### Updating Your Deployment
+
+To update your deployed app:
+```bash
+# Make your changes, then redeploy
+npm run deploy
+```
+
+The deployment typically takes 1-2 minutes to become live.
