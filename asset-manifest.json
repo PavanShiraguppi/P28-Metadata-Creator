@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/P28-Metadata-Creator/static/css/main.4ef1c8f2.css",
-    "main.js": "/P28-Metadata-Creator/static/js/main.526581c6.js",
+    "main.js": "/P28-Metadata-Creator/static/js/main.63c19101.js",
     "index.html": "/P28-Metadata-Creator/index.html",
     "main.4ef1c8f2.css.map": "/P28-Metadata-Creator/static/css/main.4ef1c8f2.css.map",
-    "main.526581c6.js.map": "/P28-Metadata-Creator/static/js/main.526581c6.js.map"
+    "main.63c19101.js.map": "/P28-Metadata-Creator/static/js/main.63c19101.js.map"
   },
   "entrypoints": [
     "static/css/main.4ef1c8f2.css",
-    "static/js/main.526581c6.js"
+    "static/js/main.63c19101.js"
   ]
 }
