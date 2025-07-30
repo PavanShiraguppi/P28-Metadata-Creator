@@ -21,7 +21,6 @@ export const PromptSchema = z.object({
   issue_type: z.string(),
   choices: ChoicesSchema,
   level_of_correctness: z.number().int().min(-1).max(2),
-  build_creator: z.string().min(1, 'Build creator is required'),
   comment: z.string().min(1, 'Comment is required'),
 });
 
@@ -82,7 +81,6 @@ export const defaultPrompt: Prompt = {
   issue_type: '',
   choices: defaultChoices,
   level_of_correctness: 0,
-  build_creator: 'default',
   comment: '',
 };
 

@@ -125,7 +125,6 @@ Advanced prompt management with visual interface:
   - Issue type (dropdown)
   - Choices ratings (interaction: 0-7, others: -1 to 7)
   - Level of correctness (-1, 0, 1, 2)
-  - Build creator (default/worker)
   - Comments (textarea)
 
 #### **Step 3: Final Details** ⭐ *New Step*
@@ -207,7 +206,6 @@ The application creates JSON files with the following structure:
         "review_readiness": "number (-1 to 7)"
       },
       "level_of_correctness": "number (-1, 0, 1, 2)",
-      "build_creator": "string (default/worker)",
       "comment": "string"
     }
   ]
@@ -235,7 +233,6 @@ The application creates JSON files with the following structure:
 - **interaction_rating**: Scale 0-7 for interaction quality
 - **Other choice ratings**: Scale -1 to 7 for various code quality aspects
 - **level_of_correctness**: Overall correctness rating (-1, 0, 1, 2)
-- **build_creator**: Per-prompt build creator setting (default/worker)
 - **comment**: Comments about the prompt response
 
 #### Final Details (Step 3) - *Available after prompts are processed*
@@ -256,7 +253,7 @@ The application creates JSON files with the following structure:
 - **Visual Improvements**: Better styling, animations, and user feedback
 
 ### ✅ **Schema Updates**
-- **Per-Prompt Build Creator**: Each prompt now has its own build_creator setting
+- **Simplified Build Creator**: Build creator is now only at the top level, removed from individual prompts
 - **Comprehensive Validation**: Improved validation with better error messages
 - **Type Safety**: Enhanced TypeScript integration with Zod schemas
 

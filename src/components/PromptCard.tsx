@@ -113,14 +113,7 @@ const PromptCard: React.FC<PromptCardProps> = ({
           {promptErrors?.level_of_correctness && <span className="error">{promptErrors.level_of_correctness.message}</span>}
         </div>
 
-        <div className="form-group">
-          <label htmlFor={`prompts.${index}.build_creator`}>Build Creator *</label>
-          <select id={`prompts.${index}.build_creator`} {...register(`prompts.${index}.build_creator` as const)}>
-            <option value="default">Default</option>
-            <option value="worker">Worker</option>
-          </select>
-          {promptErrors?.build_creator && <span className="error">{promptErrors.build_creator.message}</span>}
-        </div>
+
 
         <div className="form-group full-width">
           <label htmlFor={`prompts.${index}.comment`}>Comment *</label>
