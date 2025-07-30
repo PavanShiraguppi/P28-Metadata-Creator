@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/P28-Metadata-Creator/static/css/main.4ef1c8f2.css",
-    "main.js": "/P28-Metadata-Creator/static/js/main.63c19101.js",
+    "main.css": "/P28-Metadata-Creator/static/css/main.8aaafdd3.css",
+    "main.js": "/P28-Metadata-Creator/static/js/main.0d7bc5bf.js",
     "index.html": "/P28-Metadata-Creator/index.html",
-    "main.4ef1c8f2.css.map": "/P28-Metadata-Creator/static/css/main.4ef1c8f2.css.map",
-    "main.63c19101.js.map": "/P28-Metadata-Creator/static/js/main.63c19101.js.map"
+    "main.8aaafdd3.css.map": "/P28-Metadata-Creator/static/css/main.8aaafdd3.css.map",
+    "main.0d7bc5bf.js.map": "/P28-Metadata-Creator/static/js/main.0d7bc5bf.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ef1c8f2.css",
-    "static/js/main.63c19101.js"
+    "static/css/main.8aaafdd3.css",
+    "static/js/main.0d7bc5bf.js"
   ]
 }
