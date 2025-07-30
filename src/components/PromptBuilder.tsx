@@ -96,9 +96,6 @@ const PromptBuilder: React.FC<PromptBuilderProps> = ({
             )}
           </div>
           <div className="prompt-preview-content">
-            <p className="prompt-text">
-              {watchedData.prompts[index]?.prompt || 'Click to add prompt...'}
-            </p>
             <div className="prompt-meta">
               <span className="use-case">
                 {watchedData.prompts[index]?.usecase || 'No use case'}
